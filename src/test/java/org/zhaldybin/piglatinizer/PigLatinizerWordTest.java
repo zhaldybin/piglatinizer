@@ -10,7 +10,7 @@ public class PigLatinizerWordTest {
   private static final PigLatinizer LATINIZER = new PigLatinizer();
 
   @Test
-  public void testGivenInputTextIsEmptyStringWhenLatinizeTextIsCalledThenOutputIsEmptyString() {
+  public void testGivenInputTextIsEmptyStringWhenLatinizeTextIsCalledThenResultIsEmptyString() {
 
     // Given Input Text Is Empty String
     final String input = "";
@@ -23,20 +23,20 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsBlankStringWhenLatinizeTextIsCalledThenOutputIsBlankString() {
+  public void testGivenInputTextIsBlankStringWhenLatinizeTextIsCalledThenResultIsSameAsInput() {
 
-    // Given Input Text Is Empty String
+    // Given Input Text Is Blank String
     final String input = "   ";
 
     // When Latinize Text Is Called
     final String result = LATINIZER.latinizeText(input);
 
-    // Then Result Is Empty String
-    assertThat(result, is("   "));
+    // Then Result Is Same As Input
+    assertThat(result, is(input));
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithConsonantWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithConsonantWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Consonant
     final String input = "hello";
@@ -49,7 +49,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithVowelWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithVowelWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Vowel
     final String input = "apple";
@@ -62,7 +62,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordEndingWithWayWhenLatinizeTextIsCalledThenOutputIsSameAsInput() {
+  public void testGivenInputTextIsWordEndingWithWayWhenLatinizeTextIsCalledThenResultIsSameAsInput() {
 
     // Given Input Text Is Word Ending With Way
     final String input = "stairway";
@@ -75,7 +75,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithConsonantAndContainingApostropheWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithConsonantAndContainingApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Consonant And Containing Apostrophe
     final String input = "can't";
@@ -88,7 +88,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithVowelAndContainingApostropheWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithVowelAndContainingApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Vowel And Containing Apostrophe
     final String input = "apple's";
@@ -101,7 +101,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordEndingWithWayAndContainingApostropheWhenLatinizeTextIsCalledThenOutputIsSameAsInput() {
+  public void testGivenInputTextIsWordEndingWithWayAndContainingApostropheWhenLatinizeTextIsCalledThenResultIsSameAsInput() {
 
     // Given Input Text Is Word Ending With Way And Containing Apostrophe
     final String input = "stair'way";
@@ -114,7 +114,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithConsonantAndEndingWithApostropheWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithConsonantAndEndingWithApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Consonant And Ending With Apostrophe
     final String input = "cats'";
@@ -127,7 +127,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithVowelAndEndingWithApostropheWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithVowelAndEndingWithApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Vowel And Ending With Apostrophe
     final String input = "apples'";
@@ -140,7 +140,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithConsonantAndEndingWithDotWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithConsonantAndEndingWithDotWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Consonant And Ending With Dot
     final String input = "hello.";
@@ -153,7 +153,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithVowelAndEndingWithDotWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithVowelAndEndingWithDotWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Vowel And Ending With Dot
     final String input = "apple.";
@@ -166,7 +166,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextContainsHyphenWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextContainsHyphenWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Contains Hyphen
     final String input = "this-thing";
@@ -179,7 +179,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithUpperCaseConsonantWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithUpperCaseConsonantWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Upper Case Consonant
     final String input = "Beach";
@@ -192,7 +192,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithUpperCaseVowelWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithUpperCaseVowelWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Upper Case Vowel
     final String input = "Apple";
@@ -205,7 +205,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithConsonantAndContainingMultipleUpperCaseLettersWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithConsonantAndContainingMultipleUpperCaseLettersWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Consonant And Containing Multiple Upper Case Letters
     final String input = "McCloud";
@@ -218,7 +218,7 @@ public class PigLatinizerWordTest {
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithVowelAndContainingMultipleUpperCaseLettersWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsWordStartingWithVowelAndContainingMultipleUpperCaseLettersWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Vowel And Containing Multiple Upper Case Letters
     final String input = "ApplesOranges";
@@ -229,6 +229,5 @@ public class PigLatinizerWordTest {
     // Then Result Is Expected
     assertThat(result, is("ApplesOrangesway"));
   }
-
 
 }

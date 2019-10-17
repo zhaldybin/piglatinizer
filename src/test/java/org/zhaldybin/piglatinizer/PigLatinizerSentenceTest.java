@@ -10,7 +10,7 @@ public class PigLatinizerSentenceTest {
   private static final PigLatinizer LATINIZER = new PigLatinizer();
 
   @Test
-  public void testGivenInputTextIsSentenceWithTwoWordsWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsSentenceWithTwoWordsWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Two Words
     final String input = "hello world";
@@ -23,7 +23,7 @@ public class PigLatinizerSentenceTest {
   }
 
   @Test
-  public void testGivenInputTextIsSentenceWithTwoCapitalizedWordsWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsSentenceWithTwoCapitalizedWordsWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Two Capitalized Words
     final String input = "Hello World";
@@ -36,7 +36,7 @@ public class PigLatinizerSentenceTest {
   }
 
   @Test
-  public void testGivenInputTextIsSentenceWithTwoWordsAndPunctuationWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsSentenceWithTwoWordsAndPunctuationWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Two Words And Punctuation
     final String input = "Hello, world!";
@@ -49,7 +49,7 @@ public class PigLatinizerSentenceTest {
   }
 
   @Test
-  public void testGivenInputTextIsSentenceWithWordsStartingWithVowelsAndConsonantsWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsSentenceWithWordsStartingWithVowelsAndConsonantsWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Words Starting With Vowels And Consonants
     final String input = "hello all";
@@ -62,7 +62,7 @@ public class PigLatinizerSentenceTest {
   }
 
   @Test
-  public void testGivenInputTextIsSentenceWithWordWithApostropheWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsSentenceWithWordWithApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Word With Apostrophe
     final String input = "holiday's special";
@@ -75,7 +75,7 @@ public class PigLatinizerSentenceTest {
   }
 
   @Test
-  public void testGivenInputTextIsSentenceWithMultipleWordsAndPunctuationWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsSentenceWithMultipleWordsAndPunctuationWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Multiple Words And Punctuation
     final String input = "The solution often turns out more beautiful than the puzzle.";

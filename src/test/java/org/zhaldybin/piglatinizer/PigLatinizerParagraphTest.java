@@ -15,9 +15,9 @@ public class PigLatinizerParagraphTest {
   private static final PigLatinizer LATINIZER = new PigLatinizer();
 
   @Test
-  public void testGivenInputTextIsParagraphWithTwoSentencesWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsParagraphWithTwoLinesWhenLatinizeTextIsCalledThenResultIsExpected() {
 
-    // Given Input Text Is Paragraph With Two Sentences
+    // Given Input Text Is Paragraph With Two Lines
     // @formatter:off
     final String input = "This is the first line of text,\n"
                        + "and here goes the second one!";
@@ -34,9 +34,9 @@ public class PigLatinizerParagraphTest {
   }
 
   @Test
-  public void testGivenInputTextIsParagraphWithTwoSentencesAndNewLineAtTheBeginningWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsParagraphWithTwoLinesAndNewLineAtTheBeginningWhenLatinizeTextIsCalledThenResultIsExpected() {
 
-    // Given Input Text Is Paragraph With Two Sentences And New Line At The Beginning
+    // Given Input Text Is Paragraph With Two Lines And New Line At The Beginning
     // @formatter:off
     final String input = "\nThis is the first line of text,\n"
                        + "and here goes the second one!";
@@ -53,9 +53,9 @@ public class PigLatinizerParagraphTest {
   }
 
   @Test
-  public void testGivenInputTextIsParagraphWithTwoSentencesAndAnEmptyLineInBetweenWhenLatinizeTextIsCalledThenOutputIsExpected() {
+  public void testGivenInputTextIsParagraphWithTwoLinesAndAnEmptyLineInBetweenWhenLatinizeTextIsCalledThenResultIsExpected() {
 
-    // Given Input Text Is Paragraph With Two Sentences And An Empty Line In Between
+    // Given Input Text Is Paragraph With Two Lines And An Empty Line In Between
     // @formatter:off
     final String input = "This is the first line of text,\n\n"
                        + "and here goes the second one!";
