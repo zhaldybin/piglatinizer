@@ -7,6 +7,25 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * <p>
+ * Translate a string into "pig-latin".
+ * </p>
+ * <p>
+ * The following rules apply when translating a string:
+ * <ul>
+ *   <li>Words that start with a consonant have their first letter moved to the end of the word and the letters “ay”
+ *       added to the end</li>
+ *   <li>Words that start with a vowel have the letters “way” added to the end</li>
+ *   <li>Words that end in “way” are not modified</li>
+ *   <li>Punctuation must remain in the same relative place from the end of the word</li>
+ *   <li>Hyphens are treated as two words</li>
+ *   <li>Capitalization must remain in the same place</li>
+ * </ul>
+ * </p>
+ *
+ * @author Leonid Zhaldybin
+ */
 public class PigLatinizer {
 
   private static final Pattern WORD_PATTERN = Pattern.compile("[\\p{Alpha}|']+");
@@ -14,6 +33,7 @@ public class PigLatinizer {
 
   public String latinizeText(final String text) {
 
+    // if text is an empty string or contains no alphabetic characters, return immediately
     if (text == null || "".equals(text) || Pattern.compile("[^\\p{Alpha}]+").matcher(text).matches()) {
       return text;
     }
@@ -25,6 +45,8 @@ public class PigLatinizer {
 
     final StringBuilder lineStringBuilder = new StringBuilder();
 
+    // split line into chunks which contain either words (alphabetic characters plus apostrophe)
+    // or sequences of non-alphabetic characters
     final Pattern wordOrDelimiterPattern = Pattern.compile("[\\p{Alpha}|']+|[^\\p{Alpha}]+");
     final Matcher wordOrDelimiterMatcher = wordOrDelimiterPattern.matcher(line);
     while (wordOrDelimiterMatcher.find()) {
