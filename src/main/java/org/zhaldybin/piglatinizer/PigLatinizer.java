@@ -1,7 +1,7 @@
 package org.zhaldybin.piglatinizer;
 
 import java.util.Arrays;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -45,10 +45,12 @@ public class PigLatinizer {
     }
 
     final int apostropheLocation = word.indexOf("'");
-    final Set<Integer> capitalLetterLocations = new LinkedHashSet<>();
+    final Set<Integer> capitalLetterLocations = new HashSet<>();
     final StringBuilder wordStringBuilder = new StringBuilder();
     for (int i = 0; i < word.length(); i++) {
-      if (i == apostropheLocation) continue;
+      if (i == apostropheLocation) {
+        continue;
+      }
       if (Character.isUpperCase(word.charAt(i))) {
         capitalLetterLocations.add(i);
         wordStringBuilder.append(Character.toLowerCase(word.charAt(i)));
@@ -60,20 +62,23 @@ public class PigLatinizer {
     String lowerCaseWord = wordStringBuilder.toString();
     wordStringBuilder.setLength(0);
 
+    final String lowerCaseLatinizedWord;
     if (isVowel(lowerCaseWord.charAt(0))) {
-      lowerCaseWord = latinizeWordStartingWithVowel(lowerCaseWord);
+      lowerCaseLatinizedWord = latinizeWordStartingWithVowel(lowerCaseWord);
     } else {
-      lowerCaseWord = latinizeWordStartingWithConsonant(lowerCaseWord);
+      lowerCaseLatinizedWord = latinizeWordStartingWithConsonant(lowerCaseWord);
     }
 
-    for (int i = 0; i < lowerCaseWord.length(); i++) {
-      if (apostropheLocation != -1 && ( lowerCaseWord.length() - (word.length() - apostropheLocation) + 1 ) == i ) {
+    final int apostropheLocationInResult =
+        apostropheLocation == -1 ? -1 : lowerCaseLatinizedWord.length() - (word.length() - apostropheLocation) + 1;
+    for (int i = 0; i < lowerCaseLatinizedWord.length(); i++) {
+      if (apostropheLocationInResult == i) {
         wordStringBuilder.append("'");
       }
       if (capitalLetterLocations.contains(i)) {
-        wordStringBuilder.append(Character.toUpperCase(lowerCaseWord.charAt(i)));
+        wordStringBuilder.append(Character.toUpperCase(lowerCaseLatinizedWord.charAt(i)));
       } else {
-        wordStringBuilder.append(lowerCaseWord.charAt(i));
+        wordStringBuilder.append(lowerCaseLatinizedWord.charAt(i));
       }
     }
 
@@ -83,7 +88,6 @@ public class PigLatinizer {
     }
 
     return wordStringBuilder.toString();
-
   }
 
   private String latinizeWordStartingWithVowel(final String word) {
