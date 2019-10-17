@@ -3,6 +3,11 @@ package org.zhaldybin.piglatinizer;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.junit.Test;
 
 public class PigLatinizerParagraphTest {
@@ -64,6 +69,24 @@ public class PigLatinizerParagraphTest {
     assertThat(result, is("Histay isway hetay irstfay inelay ofway exttay,\n\n"
                               + "andway erehay oesgay hetay econdsay oneway!"));
     // @formatter:on
+  }
+
+  @Test
+  public void testGivenTextWithMultipleParagraphsWhenLatinizeTextIsCalledThenResultIsExpected() throws Exception {
+
+    // Given Text With Multiple Paragraphs
+    final String content = readFileContent("paragraph.txt");
+
+    // When Latinize Text Is Called
+    final String result = LATINIZER.latinizeText(content);
+
+    // Then Result Is Expected
+    assertThat(result, is(readFileContent("latinizedParagraph.txt")));
+  }
+
+  private String readFileContent(final String fileName) throws URISyntaxException, IOException {
+
+    return new String(Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(fileName).toURI())));
   }
 
 }
