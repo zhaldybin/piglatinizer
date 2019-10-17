@@ -77,6 +77,11 @@ public class PigLatinizer {
       }
     }
 
+    // TODO: Come up with a better solution for this special case
+    if (word.endsWith("'")) {
+      wordStringBuilder.append("'");
+    }
+
     return wordStringBuilder.toString();
 
   }
