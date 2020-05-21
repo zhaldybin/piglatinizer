@@ -16,4 +16,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build project
-      run: mvn --bach-mode clean package
+      run: mvn --batch-mode clean package
