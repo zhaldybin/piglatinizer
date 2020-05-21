@@ -43,4 +43,5 @@ jobs:
       with:
         folder: ${{ env.ARTIFACT_DIR }}
         connection-string: ${{ secrets.CONNECTION_STRING }}
-        enabled-static-website: 'true'
+        public-access-policy: Blob
+        blob-container-name: 'cdn'
