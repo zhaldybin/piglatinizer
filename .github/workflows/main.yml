@@ -43,5 +43,5 @@ jobs:
       with:
         folder: ${{ env.ARTIFACT_DIR }}
         connection-string: ${{ secrets.CONNECTION_STRING }}
-        public-access-policy: BlobContainer
-        blob-container-name: 'cdn/subdir'
+        public-access-policy: Blob
+        blob-container-name: 'myfiles/subdir'
