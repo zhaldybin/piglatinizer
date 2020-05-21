@@ -4,6 +4,8 @@ on:
   push:
     branches: [ master ]
 
+env:
+  ARTIFACT_DIR: artifacts
 jobs:
 
   build:
@@ -25,3 +27,21 @@ jobs:
 
     - name: Build project
       run: mvn --batch-mode clean package
+
+    - name: Prepare artifacts
+      run: |
+        mkdir ${ARTIFACT_DIR}
+        cp target/*.war ${ARTIFACT_DIR}/
+    
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.0.100'
+
+    - name: Store war file to Azure
+      uses: lauchacarro/Azure-Storage-Action@master
+      with:
+        folder: ${ARTIFACT_DIR}
+        connection-string: ${{ secrets.CONNECTION_STRING }}
+        public-access-policy: BlobContainer
+        blob-container-name: 'cdn'
