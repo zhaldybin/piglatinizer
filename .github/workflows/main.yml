@@ -41,7 +41,7 @@ jobs:
     - name: Store artifacts to Azure
       uses: lauchacarro/Azure-Storage-Action@master
       with:
-        folder: "${ARTIFACT_DIR}"
+        folder: ${{ env.ARTIFACT_DIR }}
         connection-string: ${{ secrets.CONNECTION_STRING }}
         public-access-policy: BlobContainer
         blob-container-name: 'cdn'
