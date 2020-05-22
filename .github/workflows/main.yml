@@ -27,6 +27,11 @@ jobs:
 
     - name: Build project
       run: mvn --batch-mode clean package
+
+    - name: Prepare artifacts
+      run: |
+        mkdir ${ARTIFACT_DIR}
+        cp target/*.jar ${ARTIFACT_DIR}/
     
     - name: Setup dotnet
       uses: actions/setup-dotnet@v1
@@ -36,7 +41,7 @@ jobs:
     - name: Store artifacts to Azure
       uses: lauchacarro/Azure-Storage-Action@master
       with:
-        folder: 'target/piglatinazer-1.0-SNAPSHOT.jar'
+        folder: ${{ env.ARTIFACT_DIR }}
         connection-string: ${{ secrets.CONNECTION_STRING }}
         public-access-policy: Blob
         blob-container-name: 'cdn'
