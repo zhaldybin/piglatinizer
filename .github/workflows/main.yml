@@ -20,8 +20,6 @@ jobs:
     - name: Prepare directory
       run: |
         echo "::set-env name=ARTIFACT_DIR::temp/${GITHUB_REF:11}/${TARGET_DIR}"
-        echo "${ARTIFACT_DIR}"
-        mkdir -p "${ARTIFACT_DIR}"
     
     - name: Check exported variable
       run: |
