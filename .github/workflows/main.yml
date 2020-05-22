@@ -19,8 +19,9 @@ jobs:
 
     - name: Prepare directory
       run: |
-        echo "test"
-        export TEST="test"
-        echo "${TEST}"
-        echo "::set-env name=ARTIFACT_DIR::temp/${GITHUB_REF:11}"
+        echo "::set-env name=ARTIFACT_DIR::temp/${GITHUB_REF:11}/${TARGET_DIR}"
+        echo "${ARTIFACT_DIR}"
+    
+    - name: Check exported variable
+      run: |
         echo "${ARTIFACT_DIR}"
