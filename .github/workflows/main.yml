@@ -3,8 +3,6 @@ name: CI
 on:
   push
 
-env:
-  TARGET_DIR: target
 jobs:
 
   build:
@@ -16,25 +14,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Prepare directory
-      run: |
-        echo "::set-env name=TEMP_DIR::$(mktemp -d)"
+    - name: Maven modules cache
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
 
-    - name: Export git branch name
-      run: |
-        echo "::set-env name=BRANCH_NAME::${GITHUB_REF:11}"
-
-    - name: Determine blob container name
-      run: |
-        if [ "${BRANCH_NAME}" = "master" ]; then
-          echo "::set-env name=BLOB_NAME::bundles"
-        else
-          echo "::set-env name=BLOB_NAME::branchbundles"
-        fi
-
-    - name: Check exported variable
-      run: |
-        echo "${TEMP_DIR}"
-        echo "${BRANCH_NAME}"
-        echo "${BLOB_NAME}"
-        mkdir -p "${TEMP_DIR}/${BRANCH_NAME}/${TARGET_DIR}"
+    - name: Build project
+      run: mvn --batch-mode clean package
