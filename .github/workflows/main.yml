@@ -6,7 +6,6 @@ on:
 
 env:
   ARTIFACT_DIR: artifacts
-  ARTIFACT_SUB_DIR: subdir
 jobs:
 
   build:
@@ -31,8 +30,8 @@ jobs:
 
     - name: Prepare artifacts
       run: |
-        mkdir -p ${ARTIFACT_DIR}/${ARTIFACT_SUB_DIR}
-        cp target/*.jar ${ARTIFACT_DIR}/${ARTIFACT_SUB_DIR}
+        mkdir ${ARTIFACT_DIR}
+        cp target/*.jar ${ARTIFACT_DIR}/
     
     - name: Setup dotnet
       uses: actions/setup-dotnet@v1
@@ -42,7 +41,7 @@ jobs:
     - name: Store artifacts to Azure
       uses: lauchacarro/Azure-Storage-Action@master
       with:
-        folder: ${{ format('{0}/{1}', env.ARTIFACT_DIR, env.ARTIFACT_SUB_DIR) }}
+        folder: ${{ env.ARTIFACT_DIR }}
         connection-string: ${{ secrets.CONNECTION_STRING }}
         public-access-policy: Blob
         blob-container-name: 'cdn'
