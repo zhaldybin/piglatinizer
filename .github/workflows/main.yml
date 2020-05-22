@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 env:
-  ARTIFACT_DIR: artifacts
+  ARTIFACT_DIR: target
 jobs:
 
   build:
@@ -27,11 +27,6 @@ jobs:
 
     - name: Build project
       run: mvn --batch-mode clean package
-
-    - name: Prepare artifacts
-      run: |
-        mkdir ${ARTIFACT_DIR}
-        cp target/*.jar ${ARTIFACT_DIR}/
     
     - name: Setup dotnet
       uses: actions/setup-dotnet@v1
