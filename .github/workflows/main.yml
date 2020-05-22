@@ -30,7 +30,7 @@ jobs:
     
     - name: Prepare directory
       run: |
-        set-env name=ARTIFACT_DIR::temp/${GITHUB_REF:11}
+        echo "::set-env name=ARTIFACT_DIR::temp/${GITHUB_REF:11}"
         mkdir -p "${ARTIFACT_DIR}"
         cp -r "${TARGET_DIR}" "${ARTIFACT_DIR}"
     
