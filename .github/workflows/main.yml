@@ -36,7 +36,7 @@ jobs:
     - name: Store artifacts to Azure
       uses: lauchacarro/Azure-Storage-Action@master
       with:
-        folder: ${{ format('{0}/{1}', env.ARTIFACT_DIR, 'piglatinazer-1.0-SNAPSHOT.jar') }}
+        folder: 'target/piglatinazer-1.0-SNAPSHOT.jar'
         connection-string: ${{ secrets.CONNECTION_STRING }}
         public-access-policy: Blob
         blob-container-name: 'cdn'
