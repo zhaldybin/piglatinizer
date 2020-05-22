@@ -20,10 +20,22 @@ jobs:
     - name: Prepare directory
       run: |
         echo "::set-env name=TEMP_DIR::$(mktemp -d)"
+
+    - name: Export git branch name
+      run: |
         echo "::set-env name=BRANCH_NAME::${GITHUB_REF:11}"
-    
+
+    - name: Determine blob container name
+      run: |
+        if [ "${BRANCH_NAME}" = "master" ]; then
+          echo "::set-env name=BLOB_NAME::bundles"
+        else
+          echo "::set-env name=BLOB_NAME::branchbundles"
+        fi
+
     - name: Check exported variable
       run: |
         echo "${TEMP_DIR}"
-        mkdir -p "${BRANCH_NAME}"
+        echo "${BRANCH_NAME}"
+        echo "${BLOB_NAME}"
         mkdir -p "${TEMP_DIR}/${BRANCH_NAME}/${TARGET_DIR}"
