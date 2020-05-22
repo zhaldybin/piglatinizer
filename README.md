@@ -12,3 +12,4 @@ The code assumes that input is a valid text in English language, meaning that wo
 
 The tests can be executed using Maven:
 ```mvn clean test```
+ 
