@@ -16,33 +16,8 @@ jobs:
 
     - name: Checkout repository
       uses: actions/checkout@v2
-    
-    - name: Maven modules cache
-      uses: actions/cache@v1
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
 
-    - name: Build project
-      run: mvn --batch-mode clean package
-    
     - name: Prepare directory
       run: |
         echo "::set-env name=ARTIFACT_DIR::temp/${GITHUB_REF:11}"
-        mkdir -p "${ARTIFACT_DIR}"
-        cp -r "${TARGET_DIR}" "${ARTIFACT_DIR}"
-    
-    - name: Setup dotnet
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.0.100'
-
-    - name: Store artifacts to Azure
-      uses: lauchacarro/Azure-Storage-Action@master
-      with:
-        folder: ${{ env.ARTIFACT_DIR }}
-        connection-string: ${{ secrets.CONNECTION_STRING }}
-        public-access-policy: Blob
-        blob-container-name: 'cdn'
+        echo "${ARTIFACT_DIR}"
