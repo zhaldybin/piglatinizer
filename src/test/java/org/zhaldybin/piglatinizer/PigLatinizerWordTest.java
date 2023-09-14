@@ -1,16 +1,15 @@
 package org.zhaldybin.piglatinizer;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class PigLatinizerWordTest {
+class PigLatinizerWordTest {
 
   private static final PigLatinizer LATINIZER = new PigLatinizer();
 
   @Test
-  public void testGivenInputTextIsEmptyStringWhenLatinizeTextIsCalledThenResultIsEmptyString() {
+  void testGivenInputTextIsEmptyStringWhenLatinizeTextIsCalledThenResultIsEmptyString() {
 
     // Given Input Text Is Empty String
     final String input = "";
@@ -19,11 +18,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Empty String
-    assertThat(result, is(""));
+    assertThat(result).isEmpty();
   }
 
   @Test
-  public void testGivenInputTextIsBlankStringWhenLatinizeTextIsCalledThenResultIsSameAsInput() {
+  void testGivenInputTextIsBlankStringWhenLatinizeTextIsCalledThenResultIsSameAsInput() {
 
     // Given Input Text Is Blank String
     final String input = "   ";
@@ -32,11 +31,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Same As Input
-    assertThat(result, is(input));
+    assertThat(result).isEqualTo(input);
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithConsonantWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithConsonantWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Consonant
     final String input = "hello";
@@ -45,11 +44,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("ellohay"));
+    assertThat(result).isEqualTo("ellohay");
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithVowelWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithVowelWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Vowel
     final String input = "apple";
@@ -58,11 +57,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("appleway"));
+    assertThat(result).isEqualTo("appleway");
   }
 
   @Test
-  public void testGivenInputTextIsWordEndingWithWayWhenLatinizeTextIsCalledThenResultIsSameAsInput() {
+  void testGivenInputTextIsWordEndingWithWayWhenLatinizeTextIsCalledThenResultIsSameAsInput() {
 
     // Given Input Text Is Word Ending With Way
     final String input = "stairway";
@@ -71,11 +70,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Same As Input
-    assertThat(result, is(input));
+    assertThat(result).isEqualTo(input);
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithConsonantAndContainingApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithConsonantAndContainingApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Consonant And Containing Apostrophe
     final String input = "can't";
@@ -84,11 +83,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("antca'y"));
+    assertThat(result).isEqualTo("antca'y");
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithVowelAndContainingApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithVowelAndContainingApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Vowel And Containing Apostrophe
     final String input = "apple's";
@@ -97,11 +96,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("appleswa'y"));
+    assertThat(result).isEqualTo("appleswa'y");
   }
 
   @Test
-  public void testGivenInputTextIsWordEndingWithWayAndContainingApostropheWhenLatinizeTextIsCalledThenResultIsSameAsInput() {
+  void testGivenInputTextIsWordEndingWithWayAndContainingApostropheWhenLatinizeTextIsCalledThenResultIsSameAsInput() {
 
     // Given Input Text Is Word Ending With Way And Containing Apostrophe
     final String input = "stair'way";
@@ -110,11 +109,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Same As Input
-    assertThat(result, is(input));
+    assertThat(result).isEqualTo(input);
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithConsonantAndEndingWithApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithConsonantAndEndingWithApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Consonant And Ending With Apostrophe
     final String input = "cats'";
@@ -123,11 +122,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("atscay'"));
+    assertThat(result).isEqualTo("atscay'");
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithVowelAndEndingWithApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithVowelAndEndingWithApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Vowel And Ending With Apostrophe
     final String input = "apples'";
@@ -136,11 +135,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("applesway'"));
+    assertThat(result).isEqualTo("applesway'");
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithConsonantAndEndingWithDotWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithConsonantAndEndingWithDotWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Consonant And Ending With Dot
     final String input = "hello.";
@@ -149,11 +148,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("ellohay."));
+    assertThat(result).isEqualTo("ellohay.");
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithVowelAndEndingWithDotWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithVowelAndEndingWithDotWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Vowel And Ending With Dot
     final String input = "apple.";
@@ -162,11 +161,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("appleway."));
+    assertThat(result).isEqualTo("appleway.");
   }
 
   @Test
-  public void testGivenInputTextContainsHyphenWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextContainsHyphenWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Contains Hyphen
     final String input = "this-thing";
@@ -175,11 +174,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("histay-hingtay"));
+    assertThat(result).isEqualTo("histay-hingtay");
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithUpperCaseConsonantWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithUpperCaseConsonantWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Upper Case Consonant
     final String input = "Beach";
@@ -188,11 +187,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("Eachbay"));
+    assertThat(result).isEqualTo("Eachbay");
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithUpperCaseVowelWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithUpperCaseVowelWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Upper Case Vowel
     final String input = "Apple";
@@ -201,11 +200,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("Appleway"));
+    assertThat(result).isEqualTo("Appleway");
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithConsonantAndContainingMultipleUpperCaseLettersWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithConsonantAndContainingMultipleUpperCaseLettersWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Consonant And Containing Multiple Upper Case Letters
     final String input = "McCloud";
@@ -214,11 +213,11 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("CcLoudmay"));
+    assertThat(result).isEqualTo("CcLoudmay");
   }
 
   @Test
-  public void testGivenInputTextIsWordStartingWithVowelAndContainingMultipleUpperCaseLettersWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsWordStartingWithVowelAndContainingMultipleUpperCaseLettersWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Word Starting With Vowel And Containing Multiple Upper Case Letters
     final String input = "ApplesOranges";
@@ -227,7 +226,7 @@ public class PigLatinizerWordTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("ApplesOrangesway"));
+    assertThat(result).isEqualTo("ApplesOrangesway");
   }
 
 }

@@ -1,16 +1,15 @@
 package org.zhaldybin.piglatinizer;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class PigLatinizerSentenceTest {
+class PigLatinizerSentenceTest {
 
   private static final PigLatinizer LATINIZER = new PigLatinizer();
 
   @Test
-  public void testGivenInputTextIsSentenceWithTwoWordsWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsSentenceWithTwoWordsWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Two Words
     final String input = "hello world";
@@ -19,11 +18,11 @@ public class PigLatinizerSentenceTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("ellohay orldway"));
+    assertThat(result).isEqualTo("ellohay orldway");
   }
 
   @Test
-  public void testGivenInputTextIsSentenceWithTwoCapitalizedWordsWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsSentenceWithTwoCapitalizedWordsWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Two Capitalized Words
     final String input = "Hello World";
@@ -32,11 +31,11 @@ public class PigLatinizerSentenceTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("Ellohay Orldway"));
+    assertThat(result).isEqualTo("Ellohay Orldway");
   }
 
   @Test
-  public void testGivenInputTextIsSentenceWithTwoWordsAndPunctuationWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsSentenceWithTwoWordsAndPunctuationWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Two Words And Punctuation
     final String input = "Hello, world!";
@@ -45,11 +44,11 @@ public class PigLatinizerSentenceTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("Ellohay, orldway!"));
+    assertThat(result).isEqualTo("Ellohay, orldway!");
   }
 
   @Test
-  public void testGivenInputTextIsSentenceWithWordsStartingWithVowelsAndConsonantsWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsSentenceWithWordsStartingWithVowelsAndConsonantsWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Words Starting With Vowels And Consonants
     final String input = "hello all";
@@ -58,11 +57,11 @@ public class PigLatinizerSentenceTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("ellohay allway"));
+    assertThat(result).isEqualTo("ellohay allway");
   }
 
   @Test
-  public void testGivenInputTextIsSentenceWithWordWithApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsSentenceWithWordWithApostropheWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Word With Apostrophe
     final String input = "holiday's special";
@@ -71,11 +70,11 @@ public class PigLatinizerSentenceTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("olidaysha'y pecialsay"));
+    assertThat(result).isEqualTo("olidaysha'y pecialsay");
   }
 
   @Test
-  public void testGivenInputTextIsSentenceWithMultipleWordsAndPunctuationWhenLatinizeTextIsCalledThenResultIsExpected() {
+  void testGivenInputTextIsSentenceWithMultipleWordsAndPunctuationWhenLatinizeTextIsCalledThenResultIsExpected() {
 
     // Given Input Text Is Sentence With Multiple Words And Punctuation
     final String input = "The solution often turns out more beautiful than the puzzle.";
@@ -84,7 +83,7 @@ public class PigLatinizerSentenceTest {
     final String result = LATINIZER.latinizeText(input);
 
     // Then Result Is Expected
-    assertThat(result, is("Hetay olutionsay oftenway urnstay outway oremay eautifulbay hantay hetay uzzlepay."));
+    assertThat(result).isEqualTo("Hetay olutionsay oftenway urnstay outway oremay eautifulbay hantay hetay uzzlepay.");
   }
 
 }
