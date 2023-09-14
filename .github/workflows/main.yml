@@ -22,5 +22,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
+    - name: Setup java version
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
     - name: Build project
       run: mvn --batch-mode clean package
